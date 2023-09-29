@@ -20,6 +20,10 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## UI Library
+
+This app uses [TailwindUI](https://tailwindui.com/components?ref=sidebar) and [shadcn](https://ui.shadcn.com/docs) to seamlessly create components within the NextJS/React framework. See their docs to learn how to add new components, themes, and styles.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
