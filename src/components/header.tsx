@@ -2,6 +2,7 @@
 import MishoTempLogo from "../../public/image/misho-temp-logo.png";
 import Image from "next/image";
 import { Fragment, useState } from "react";
+import { Icons } from "./icons";
 // import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
 import NavigationMenuUIHero from "./navigation-menu-ui-hero";
 import {
@@ -11,7 +12,6 @@ import {
     CursorArrowRaysIcon,
     FingerPrintIcon,
     SquaresPlusIcon,
-    XMarkIcon,
 } from "@heroicons/react/24/outline";
 import {
     ChevronDownIcon,
@@ -29,47 +29,6 @@ import {
 import { motion } from "framer-motion";
 
 import ThemeToggle from "@/components/theme-toggle";
-
-const products = [
-    {
-        name: "Analytics",
-        description: "Get a better understanding of your traffic",
-        href: "#",
-        icon: ChartPieIcon,
-    },
-    {
-        name: "Engagement",
-        description: "Speak directly to your customers",
-        href: "#",
-        icon: CursorArrowRaysIcon,
-    },
-    {
-        name: "Security",
-        description: "Your customers’ data will be safe and secure",
-        href: "#",
-        icon: FingerPrintIcon,
-    },
-    {
-        name: "Integrations",
-        description: "Connect with third-party tools",
-        href: "#",
-        icon: SquaresPlusIcon,
-    },
-    {
-        name: "Automations",
-        description: "Build strategic funnels that will convert",
-        href: "#",
-        icon: ArrowPathIcon,
-    },
-];
-const callsToAction = [
-    { name: "Watch demo", href: "#", icon: PlayCircleIcon },
-    { name: "Contact sales", href: "#", icon: PhoneIcon },
-];
-
-function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-}
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -96,7 +55,6 @@ export default function Header() {
                     }}
                     className="ml-auto"
                 >
-                    {" "}
                     <button
                         className="inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 py-2 mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
                         type="button"
@@ -105,38 +63,10 @@ export default function Header() {
                         aria-controls="radix-:R15hja:"
                         data-state="closed"
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-6 h-6"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                            />
-                        </svg>
-                        <span className="sr-only">Toggle Menu</span>
+                        {Icons.threeBar()}
                     </button>
                 </motion.div>
-                {/* <nav
-                    className="mx-auto flex max-w-7xl items-center justify-between lg:px-8"
-                    aria-label="Global"
-                >
-                    <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <a
-                            href="#"
-                            className="text-sm font-semibold leading-6 text-gray-900"
-                        >
-                            Log in <span aria-hidden="true">&rarr;</span>
-                        </a>
-                    </div>
-                </nav> */}
             </div>
-
             {/* <Dialog
                 as="div"
                 className="lg:hidden"

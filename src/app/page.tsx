@@ -3,9 +3,28 @@
 // import { ThemeToggle } from "@/components/theme-toggle";
 
 import Header from "@/components/header";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import UIHeroVideo from "../../public/video/misho-ui-hero-video-filter-1.mp4";
 
 export default function Home() {
-    return <Header />;
+    return (
+        <div>
+            <Header />
+            <div>
+                <AspectRatio ratio={16 / 9}>
+                    <video
+                        src={UIHeroVideo}
+                        className="relative z-20 h-full w-full object-cover transition-opacity duration-300 pointer  visible opacity-100"
+                        autoPlay
+                        muted
+                        aria-hidden="true"
+                        playsInline
+                        loop
+                    />
+                </AspectRatio>
+            </div>
+        </div>
+    );
     // return (
     //     <main className="flex min-h-screen flex-col items-center justify-between p-24">
     //         <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
