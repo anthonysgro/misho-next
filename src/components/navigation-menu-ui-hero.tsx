@@ -13,71 +13,45 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
-    navigationMenuHeroStyle,
-    navigationMenuHeroStyle2,
 } from "@/components/ui/navigation-menu";
 
 const components: { title: string; href: string; description: string }[] = [
     {
-        title: "Alert Dialog",
-        href: "/docs/primitives/alert-dialog",
+        title: "Give100",
+        href: "/initiatives/give100",
         description:
-            "A modal dialog that interrupts the user with important content and expects a response.",
+            "A giving model encouraging monthly gifts to our community members.",
     },
     {
-        title: "Hover Card",
+        title: "Membership",
         href: "/docs/primitives/hover-card",
-        description:
-            "For sighted users to preview content available behind a link.",
+        description: "Support our digital efforts with a recurring membership.",
     },
     {
-        title: "Progress",
+        title: "Volunteer",
         href: "/docs/primitives/progress",
-        description:
-            "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-    },
-    {
-        title: "Scroll-area",
-        href: "/docs/primitives/scroll-area",
-        description: "Visually or semantically separates content.",
-    },
-    {
-        title: "Tabs",
-        href: "/docs/primitives/tabs",
-        description:
-            "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    },
-    {
-        title: "Tooltip",
-        href: "/docs/primitives/tooltip",
-        description:
-            "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+        description: "Help us host events to uplift and support our community",
     },
 ];
 
 export default function NavigationMenuUIHero() {
     return (
-        <NavigationMenu className="lg:flex lg:flex-1 lg:justify-end">
+        <NavigationMenu>
             <NavigationMenuList>
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger
-                        className={cn(
-                            navigationMenuTriggerStyle(),
-                            navigationMenuHeroStyle2(),
-                        )}
-                    >
+                    <NavigationMenuTrigger className="text-md font-normal">
                         Get Involved
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                            <li className="text-md row-span-3">
+                            <li className="row-span-3">
                                 <NavigationMenuLink asChild>
                                     <a
                                         className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                                         href="/"
                                     >
                                         <Icons.logo className="h-6 w-6" />
-                                        <div className="mb-2 mt-4 text-md font-medium">
+                                        <div className="mb-2 mt-4 text-lg font-medium">
                                             Donate
                                         </div>
                                         <p className="text-sm leading-tight text-muted-foreground">
@@ -87,49 +61,38 @@ export default function NavigationMenuUIHero() {
                                     </a>
                                 </NavigationMenuLink>
                             </li>
-                            <NagationListItemUIHero
-                                href="/volunteer"
-                                title="Volunteer"
-                            >
+                            <ListItem href="/volunteer" title="Volunteer">
                                 Get active in the community and help combat
                                 poverty.
-                            </NagationListItemUIHero>
-                            <NagationListItemUIHero
-                                href="/connect"
-                                title="Connect"
-                            >
+                            </ListItem>
+                            <ListItem href="/connect" title="Connect">
                                 Spread the word and interact with our social
                                 media pages.
-                            </NagationListItemUIHero>
-                            <NagationListItemUIHero
-                                href="/learn-more"
-                                title="Learn more"
+                            </ListItem>
+                            <ListItem
+                                href="/docs/primitives/typography"
+                                title="Learn More"
                             >
                                 Read more about our organization, mission, and
                                 activism.
-                            </NagationListItemUIHero>
+                            </ListItem>
                         </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger
-                        className={cn(
-                            navigationMenuTriggerStyle(),
-                            navigationMenuHeroStyle2(),
-                        )}
-                    >
-                        Components
+                    <NavigationMenuTrigger className="text-md font-normal">
+                        Initiatives
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                             {components.map((component) => (
-                                <NagationListItemUIHero
+                                <ListItem
                                     key={component.title}
                                     title={component.title}
                                     href={component.href}
                                 >
                                     {component.description}
-                                </NagationListItemUIHero>
+                                </ListItem>
                             ))}
                         </ul>
                     </NavigationMenuContent>
@@ -139,7 +102,7 @@ export default function NavigationMenuUIHero() {
                         <NavigationMenuLink
                             className={cn(
                                 navigationMenuTriggerStyle(),
-                                navigationMenuHeroStyle2(),
+                                "text-md font-normal",
                             )}
                         >
                             About Us
@@ -151,7 +114,7 @@ export default function NavigationMenuUIHero() {
     );
 }
 
-const NagationListItemUIHero = React.forwardRef<
+const ListItem = React.forwardRef<
     React.ElementRef<"a">,
     React.ComponentPropsWithoutRef<"a">
 >(({ className, title, children, ...props }, ref) => {
@@ -162,6 +125,132 @@ const NagationListItemUIHero = React.forwardRef<
                     ref={ref}
                     className={cn(
                         "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        className,
+                    )}
+                    {...props}
+                >
+                    <div className="text-sm font-medium leading-none">
+                        {title}
+                    </div>
+                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                        {children}
+                    </p>
+                </a>
+            </NavigationMenuLink>
+        </li>
+    );
+});
+ListItem.displayName = "ListItem";
+
+// export default function NavigationMenuUIHero() {
+//     return (
+//         <NavigationMenu className="lg:flex lg:flex-1 lg:justify-end">
+//             <NavigationMenuList>
+//                 <NavigationMenuItem>
+//                     <NavigationMenuTrigger
+//                         className={cn(
+//                             navigationMenuTriggerStyle(),
+//                             navigationMenuHeroStyle2(),
+//                         )}
+//                     >
+//                         Get Involved
+//                     </NavigationMenuTrigger>
+//                     <NavigationMenuContent>
+//                         <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+//                             <li className="text-md row-span-3">
+//                                 <NavigationMenuLink asChild>
+//                                     <a
+//                                         className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+//                                         href="/"
+//                                     >
+//                                         <Icons.logo className="h-6 w-6" />
+//                                         <div className="mb-2 mt-4 text-md font-medium">
+//                                             Donate
+//                                         </div>
+//                                         <p className="text-sm leading-tight text-muted-foreground">
+//                                             Make an immediate impact with your
+//                                             financial gift today.
+//                                         </p>
+//                                     </a>
+//                                 </NavigationMenuLink>
+//                             </li>
+//                             <NagationListItemUIHero
+//                                 href="/volunteer"
+//                                 title="Volunteer"
+//                             >
+//                                 Get active in the community and help combat
+//                                 poverty.
+//                             </NagationListItemUIHero>
+//                             <NagationListItemUIHero
+//                                 href="/connect"
+//                                 title="Connect"
+//                             >
+//                                 Spread the word and interact with our social
+//                                 media pages.
+//                             </NagationListItemUIHero>
+//                             <NagationListItemUIHero
+//                                 href="/learn-more"
+//                                 title="Learn more"
+//                             >
+//                                 Read more about our organization, mission, and
+//                                 activism.
+//                             </NagationListItemUIHero>
+//                         </ul>
+//                     </NavigationMenuContent>
+//                 </NavigationMenuItem>
+//                 <NavigationMenuItem>
+//                     <NavigationMenuTrigger
+//                         className={cn(
+//                             navigationMenuTriggerStyle(),
+//                             navigationMenuHeroStyle2(),
+//                         )}
+//                     >
+//                         Components
+//                     </NavigationMenuTrigger>
+//                     <NavigationMenuContent>
+//                         <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+//                             {components.map((component) => (
+//                                 <NagationListItemUIHero
+//                                     key={component.title}
+//                                     title={component.title}
+//                                     href={component.href}
+//                                 >
+//                                     {component.description}
+//                                 </NagationListItemUIHero>
+//                             ))}
+//                         </ul>
+//                     </NavigationMenuContent>
+//                 </NavigationMenuItem>
+//             </NavigationMenuList>
+//             <NavigationMenuList>
+//                 <NavigationMenuItem>
+//                     <Link href="/docs" legacyBehavior passHref>
+//                         <NavigationMenuTriggerNoChevron
+//                             className={cn(
+//                                 navigationMenuTriggerStyle(),
+//                                 navigationMenuHeroStyle2(),
+//                             )}
+//                         >
+//                             About Us
+//                         </NavigationMenuTriggerNoChevron>
+//                     </Link>
+//                 </NavigationMenuItem>
+//             </NavigationMenuList>
+//         </NavigationMenu>
+//     );
+// }
+
+const NagationListItemUIHero = React.forwardRef<
+    React.ElementRef<"a">,
+    React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+    return (
+        <li>
+            <NavigationMenuLink asChild>
+                <a
+                    ref={ref}
+                    className={cn(
+                        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                         className,
                     )}
                     {...props}

@@ -5,13 +5,14 @@
 import Header from "@/components/header";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import UIHeroVideo from "../../public/video/misho-ui-hero-video-filter-1.mp4";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
     return (
         <div>
             <Header />
-            <div>
-                <AspectRatio ratio={16 / 9}>
+            <div className="relative h-screen w-full min-h-[500px] lg:min-h-[600px]">
+                <div className="theme-light-gray relative h-full w-full">
                     <video
                         src={UIHeroVideo}
                         className="relative z-20 h-full w-full object-cover transition-opacity duration-300 pointer  visible opacity-100"
@@ -20,8 +21,81 @@ export default function Home() {
                         aria-hidden="true"
                         playsInline
                         loop
-                    />
-                </AspectRatio>
+                        typeof="video/mp4"
+                    >
+                        Your browser does not support the video tag
+                    </video>
+                    <div className="absolute bottom-gutter right-gutter z-50">
+                        <button
+                            aria-label="Pause video"
+                            className="ui-button relative inline-block px-16 xs:pt-9 xs:pb-10 lg:pt-10 lg:pb-12 h-44 lg:h-48 bg-inverse text-inverse hover-hover:hover:bg-primary hover-hover:hover:text-primary border border-primary hover-hover:hover:border-primary active:border-primary active:bg-primary active:text-primary w-44 flex xs:px-0 justify-center md:w-auto md:px-16 z-[300] focus:before:border-inverse"
+                            type="button"
+                            aria-hidden="true"
+                        >
+                            {/* <span className="flex items-center justify-center">
+                                <svg
+                                    data-v-cbc994d7=""
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 16 16"
+                                    className="a-icon--pause400 a-icon--text a-icon--no-align flex mt-5 md:mt-0 f-ui-1 lg:mt-1 md:-ml-4"
+                                    data-new=""
+                                    // style="width: 1em; height: 1em;"
+                                >
+                                    <g data-v-cbc994d7="" fill="currentColor">
+                                        <rect
+                                            x="9.81"
+                                            y="2"
+                                            width="1.38"
+                                            height="12"
+                                        ></rect>
+                                        <rect
+                                            x="4.81"
+                                            y="2"
+                                            width="1.38"
+                                            height="12"
+                                        ></rect>
+                                    </g>
+                                </svg>
+                                <span className="ml-8 hidden md:inline f-ui-1">
+                                    Pause video
+                                </span>
+                            </span> */}
+                        </button>
+                    </div>
+                </div>
+                <div className="absolute top-0 right-0 bottom-0 left-0 z-[20] pointer-events-none bg-[rgba(0,0,0,0.45)] text-[color:white]">
+                    {/* <div className="container absolute bottom-13 md:bottom-22 left-0 right-0"> */}
+                    <div className="container absolute bottom-14 md:bottom-22 left-0 right-0">
+                        <div className="cols-container">
+                            <div className="relative z-40 lg:ml-40 xs:w-6-cols md:w-8-cols lg:w-8-cols lg:mr-60 md:mr-20 sm:mr-10">
+                                <h1 className="f-display-2 pointer-events-auto">
+                                    Uniting community through action &
+                                    solidarity
+                                </h1>
+                                <h2 className="sr-only" id="heroLinks">
+                                    Quicklinks
+                                </h2>
+                                <Button
+                                    variant="outline"
+                                    className="mt-spacing-6 mr-60 py-0 flex flex-row flex-wrap items-center md:mr-0 pointer-events-auto"
+                                >
+                                    <a
+                                        href="/about"
+                                        className="ui-link group inline-block pt-[.3rem] pb-[.3rem] px-3 hover-hover:hover:bg-inverse hover-hover:hover:text-inverse hover-hover:hover:border-primary relative ui-link--inherit"
+                                        aria-label="Learn about Misho"
+                                    >
+                                        <span className="flex items-center">
+                                            <span className="f-ui-1">
+                                                Learn about Thingy
+                                            </span>
+                                        </span>
+                                    </a>
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

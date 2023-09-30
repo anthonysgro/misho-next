@@ -1,5 +1,4 @@
 "use client";
-import MishoTempLogo from "../../public/image/misho-temp-logo.png";
 import Image from "next/image";
 import { Fragment, useState } from "react";
 import { Icons } from "./icons";
@@ -34,16 +33,16 @@ export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
-        <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
+        <header className="fixed top-0 left-0 right-0 z-[60] py-4 xs:h-64 md:h-80 md:py-22 transition-all duration-300 text-[color:white]">
             <div className="container flex h-14 items-center">
                 <div className="mr-4 flex flex-row">
-                    <a href="#" className="mr-6 flex items-center space-x-2">
-                        <Image className="h-6 w-6" src={MishoTempLogo} alt="" />
-                        <span className="flex font-bold sm:inline-block">
-                            misho
+                    <a href="#" className="mr-24 flex items-center space-x-2">
+                        {Icons.connectLogo()}
+                        <span className="font-semibold sm:inline-block text-xl">
+                            Thingy
                         </span>
                     </a>
-                    <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <nav className="hidden md:flex items-center space-x-6 font-normal">
                         <NavigationMenuUIHero />
                     </nav>
                 </div>
