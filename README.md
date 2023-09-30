@@ -24,6 +24,8 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 This app uses [TailwindUI](https://tailwindui.com/components?ref=sidebar) and [shadcn](https://ui.shadcn.com/docs) to seamlessly create components within the NextJS/React framework. See their docs to learn how to add new components, themes, and styles.
 
+Additionally, this app uses [Framer Motion](https://www.framer.com/motion/), [Hero Icons](https://heroicons.com/), and [DaisyUI](https://daisyui.com/docs/colors/) colors.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

@@ -14,6 +14,7 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { motion } from "framer-motion";
 
 const components: { title: string; href: string; description: string }[] = [
     {
@@ -98,7 +99,7 @@ export default function NavigationMenuUIHero() {
                     </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <Link href="/docs" legacyBehavior passHref>
+                    <Link href="/about" legacyBehavior passHref>
                         <NavigationMenuLink
                             className={cn(
                                 navigationMenuTriggerStyle(),
@@ -141,104 +142,6 @@ const ListItem = React.forwardRef<
     );
 });
 ListItem.displayName = "ListItem";
-
-// export default function NavigationMenuUIHero() {
-//     return (
-//         <NavigationMenu className="lg:flex lg:flex-1 lg:justify-end">
-//             <NavigationMenuList>
-//                 <NavigationMenuItem>
-//                     <NavigationMenuTrigger
-//                         className={cn(
-//                             navigationMenuTriggerStyle(),
-//                             navigationMenuHeroStyle2(),
-//                         )}
-//                     >
-//                         Get Involved
-//                     </NavigationMenuTrigger>
-//                     <NavigationMenuContent>
-//                         <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-//                             <li className="text-md row-span-3">
-//                                 <NavigationMenuLink asChild>
-//                                     <a
-//                                         className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-//                                         href="/"
-//                                     >
-//                                         <Icons.logo className="h-6 w-6" />
-//                                         <div className="mb-2 mt-4 text-md font-medium">
-//                                             Donate
-//                                         </div>
-//                                         <p className="text-sm leading-tight text-muted-foreground">
-//                                             Make an immediate impact with your
-//                                             financial gift today.
-//                                         </p>
-//                                     </a>
-//                                 </NavigationMenuLink>
-//                             </li>
-//                             <NagationListItemUIHero
-//                                 href="/volunteer"
-//                                 title="Volunteer"
-//                             >
-//                                 Get active in the community and help combat
-//                                 poverty.
-//                             </NagationListItemUIHero>
-//                             <NagationListItemUIHero
-//                                 href="/connect"
-//                                 title="Connect"
-//                             >
-//                                 Spread the word and interact with our social
-//                                 media pages.
-//                             </NagationListItemUIHero>
-//                             <NagationListItemUIHero
-//                                 href="/learn-more"
-//                                 title="Learn more"
-//                             >
-//                                 Read more about our organization, mission, and
-//                                 activism.
-//                             </NagationListItemUIHero>
-//                         </ul>
-//                     </NavigationMenuContent>
-//                 </NavigationMenuItem>
-//                 <NavigationMenuItem>
-//                     <NavigationMenuTrigger
-//                         className={cn(
-//                             navigationMenuTriggerStyle(),
-//                             navigationMenuHeroStyle2(),
-//                         )}
-//                     >
-//                         Components
-//                     </NavigationMenuTrigger>
-//                     <NavigationMenuContent>
-//                         <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-//                             {components.map((component) => (
-//                                 <NagationListItemUIHero
-//                                     key={component.title}
-//                                     title={component.title}
-//                                     href={component.href}
-//                                 >
-//                                     {component.description}
-//                                 </NagationListItemUIHero>
-//                             ))}
-//                         </ul>
-//                     </NavigationMenuContent>
-//                 </NavigationMenuItem>
-//             </NavigationMenuList>
-//             <NavigationMenuList>
-//                 <NavigationMenuItem>
-//                     <Link href="/docs" legacyBehavior passHref>
-//                         <NavigationMenuTriggerNoChevron
-//                             className={cn(
-//                                 navigationMenuTriggerStyle(),
-//                                 navigationMenuHeroStyle2(),
-//                             )}
-//                         >
-//                             About Us
-//                         </NavigationMenuTriggerNoChevron>
-//                     </Link>
-//                 </NavigationMenuItem>
-//             </NavigationMenuList>
-//         </NavigationMenu>
-//     );
-// }
 
 const NagationListItemUIHero = React.forwardRef<
     React.ElementRef<"a">,

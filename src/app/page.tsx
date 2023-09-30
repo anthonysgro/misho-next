@@ -63,7 +63,7 @@ export default function Home() {
                                 </h2>
                                 <Button
                                     variant="outline"
-                                    className="mt-spacing-6 mr-60 py-0 flex flex-row flex-wrap items-center md:mr-0 pointer-events-auto"
+                                    className="hidden mt-spacing-6 mr-60 py-0 sm:flex flex-row flex-wrap items-center md:mr-0 pointer-events-auto"
                                 >
                                     <a
                                         href="/about"
