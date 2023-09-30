@@ -9,6 +9,8 @@ module.exports = {
     ],
     theme: {
         colors: {
+            "baby-blue": "#F8818C",
+            "deep-blue": "#111827",
             blue: "#1fb6ff",
             purple: "#7e5bef",
             pink: "#ff49db",
@@ -18,6 +20,7 @@ module.exports = {
             "gray-dark": "#273444",
             gray: "#8492a6",
             "gray-light": "#d3dce6",
+            dark: "#1a1a1a",
         },
         fontFamily: {
             sans: ["Graphik", "sans-serif"],

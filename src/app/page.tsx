@@ -2,6 +2,10 @@ import Header from "@/components/header";
 import React from "react";
 import LandingVideo from "@/components/landing-video";
 import LandingText from "@/components/landing-text";
+import Feature from "@/components/feature";
+
+const items = [{ title: "Okay", subtitle: "nuhuh", id: 0 }];
+
 export default function Home() {
     return (
         <main>
@@ -10,7 +14,7 @@ export default function Home() {
                 <LandingVideo />
                 <LandingText />
             </div>
-            <section>Something</section>
+            <Feature />
         </main>
     );
 }
