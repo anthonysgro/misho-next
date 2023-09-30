@@ -14,11 +14,7 @@ export default function Home() {
 
     const handleVideoPlayPause = () => {
         setPaused(!paused);
-        if (paused === true) {
-            videoRef?.current?.play();
-        } else {
-            videoRef?.current?.pause();
-        }
+        paused ? videoRef?.current?.play() : videoRef?.current?.pause();
     };
 
     return (
@@ -39,15 +35,17 @@ export default function Home() {
                     >
                         Your browser does not support the video tag
                     </video>
-                    <div className="absolute bottom-gutter bottom-[24px] right-[24px] z-50">
+                    <div className="absolute bottom-gutter bottom-14 right-[24px] z-50">
                         <Button
                             variant="outline"
-                            className="mt-spacing-6 mr-60 py-0 flex flex-row flex-wrap items-center md:mr-0 pointer-events-auto"
+                            className="mt-spacing-6 lg:mr-10 lg:w-[100px] py-0 flex flex-row flex-wrap items-center md:mr-0 pointer-events-auto"
                             onClick={() => handleVideoPlayPause()}
                         >
                             <span className="flex items-center">
                                 {paused ? Icons.play() : Icons.pause()}{" "}
-                                <span className="f-ui-1">Pause</span>
+                                <span className="f-ui-1 hidden md:flex">
+                                    {paused ? "Play" : "Pause"}
+                                </span>
                             </span>
                         </Button>
                     </div>
