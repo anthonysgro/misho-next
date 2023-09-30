@@ -53,7 +53,6 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="absolute top-0 right-0 bottom-0 left-0 z-[20] pointer-events-none bg-[rgba(0,0,0,0.45)]">
-                    {/* <div className="container absolute bottom-13 md:bottom-22 left-0 right-0"> */}
                     <div className="container absolute bottom-14 md:bottom-22 left-0 right-0">
                         <div className="cols-container">
                             <div className="relative z-40 lg:ml-40 xs:w-6-cols md:w-8-cols lg:w-8-cols lg:mr-60 md:mr-20 sm:mr-10">
