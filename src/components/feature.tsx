@@ -1,9 +1,14 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 
 export default function Feature() {
+    const [animated, setAnimated] = useState(false);
+
+    const x = useMotionValue(0);
+    const opacity = useTransform(x, [-100, 0, 100], [0, 1, 0]);
+
     return (
         <section className="py-20 px-10 relative dark bg-background w-full min-h-[300px] lg:min-h-[500px] flex justify-start items-center flex-col">
             <motion.div
@@ -23,6 +28,19 @@ export default function Feature() {
                     are all bound up in each other.
                 </p>
             </motion.div>
+            <motion.div
+                layout
+                className="bg-blue w-60 h-60"
+                animate={{
+                    scale: [1, 2, 2, 1, 1],
+                    rotate: [0, 0, 270, 270, 0],
+                    borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+                }}
+            />
+
+            <button onClick={() => setAnimated(!animated)}>
+                Click to animate
+            </button>
         </section>
     );
 }

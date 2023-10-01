@@ -7,6 +7,7 @@ import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { CircleLoader } from "react-spinners";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -42,7 +43,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                     </div>
                     <Button disabled={isLoading}>
                         {isLoading && (
-                            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                            <CircleLoader className="mr-2 h-4 w-4 animate-spin" />
                         )}
                         Sign In with Email
                     </Button>
@@ -60,11 +61,11 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             </div>
             <Button variant="outline" type="button" disabled={isLoading}>
                 {isLoading ? (
-                    <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                    <CircleLoader className="mr-2 h-4 w-4 animate-spin" />
                 ) : (
-                    <Icons.gitHub className="mr-2 h-4 w-4" />
+                    <Icons.google className="mr-2 h-4 w-4" />
                 )}{" "}
-                Github
+                <p className="ml-1">Google</p>
             </Button>
         </div>
     );
