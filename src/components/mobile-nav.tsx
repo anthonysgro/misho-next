@@ -1,11 +1,9 @@
 import React from "react";
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
-import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Icons } from "./icons";
-import ThemeToggle from "@/components/theme-toggle";
 import { motion } from "framer-motion";
 import Link, { LinkProps } from "next/link";
 import { cn } from "@/lib/utils";
@@ -54,6 +52,7 @@ export default function MobileNav({
                             (item) =>
                                 item.href && (
                                     <MobileLink
+                                        className="hover:underline"
                                         key={item.href}
                                         href={item.href}
                                         onOpenChange={toggleMobileMenu}
@@ -67,7 +66,7 @@ export default function MobileNav({
                         {docsConfig.sidebarNav.map((item, index) => (
                             <div
                                 key={index}
-                                className="flex flex-col space-y-3 pt-6"
+                                className="flex flex-col space-y-3 pt-6 "
                             >
                                 <h4 className="font-medium">{item.title}</h4>
                                 {item?.items?.length &&
@@ -80,7 +79,7 @@ export default function MobileNav({
                                                         onOpenChange={
                                                             toggleMobileMenu
                                                         }
-                                                        className="text-muted-foreground"
+                                                        className="text-muted-foreground hover:underline"
                                                     >
                                                         {item.title}
                                                     </MobileLink>
