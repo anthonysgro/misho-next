@@ -11,7 +11,7 @@ export default function Home() {
     return (
         <main>
             <Header />
-            <div className="relative h-screen w-full min-h-[500px] lg:min-h-[600px] text-[color:white]">
+            <div className="relative h-screen w-full min-h-[500px] lg:min-h-[600px] text-[color:white] light">
                 <LandingVideo />
                 <LandingText />
             </div>

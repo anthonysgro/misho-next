@@ -7,7 +7,6 @@ import {
     useTransform,
     AnimateSharedLayout,
 } from "framer-motion";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import {
     Store,
     Card,
