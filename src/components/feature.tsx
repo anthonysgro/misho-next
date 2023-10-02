@@ -1,20 +1,33 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import {
+    motion,
+    useMotionValue,
+    useTransform,
+    AnimateSharedLayout,
+} from "framer-motion";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+    Store,
+    Card,
+    List,
+    items,
+} from "@/components/test-framer/test-feature";
 
 export default function Feature() {
     const [animated, setAnimated] = useState(false);
-
-    const x = useMotionValue(0);
-    const opacity = useTransform(x, [-100, 0, 100], [0, 1, 0]);
+    const [selectedId, setSelectedId] = useState(null) as [
+        string | null,
+        React.Dispatch<React.SetStateAction<string | null>>,
+    ];
 
     return (
         <section className="py-20 px-10 relative dark bg-background w-full min-h-[300px] lg:min-h-[500px] flex justify-start items-center flex-col">
             <motion.div
-                initial={{ opacity: 0 }}
+                initial={{ opacity: 1 }}
                 whileInView={{ opacity: 1 }}
-                // viewport={{ once: true,  }}
+                viewport={{ once: true }}
                 className="flex flex-col items-center text-center max-w-2xl"
             >
                 <p className="text-primary my-2">Engage Community</p>
@@ -28,19 +41,7 @@ export default function Feature() {
                     are all bound up in each other.
                 </p>
             </motion.div>
-            <motion.div
-                layout
-                className="bg-blue w-60 h-60"
-                animate={{
-                    scale: [1, 2, 2, 1, 1],
-                    rotate: [0, 0, 270, 270, 0],
-                    borderRadius: ["20%", "20%", "50%", "50%", "20%"],
-                }}
-            />
-
-            <button onClick={() => setAnimated(!animated)}>
-                Click to animate
-            </button>
+            <List selectedId={selectedId} setSelectedId={setSelectedId} />
         </section>
     );
 }
