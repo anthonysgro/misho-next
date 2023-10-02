@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import LoremIpsum from "react-lorem-ipsum";
 import { StaticImageData } from "next/image";
-
+import Image from "next/image";
 import aPic from "../../../public/image/a.jpeg";
 import bPic from "../../../public/image/b.jpeg";
 import cPic from "../../../public/image/c.jpeg";
@@ -89,9 +89,17 @@ export const items: Item[] = [
 
 const openSpring = { type: "spring", stiffness: 200, damping: 30 };
 
-export function Item({ id }: { id: string }) {
-    const category = items.find((item) => item.id === id)!.category;
-    const title = items.find((item) => item.id === id)!.title;
+export function Item({
+    id,
+    setSelectedId,
+}: {
+    id: string;
+    setSelectedId: any;
+}) {
+    const item = items.find((item) => item.id === id);
+    if (!item) return "";
+
+    const { title, category, image } = item;
 
     return (
         <>
@@ -103,7 +111,7 @@ export function Item({ id }: { id: string }) {
                 style={{ pointerEvents: "auto" }}
                 className="overlay"
             >
-                <Link href="#" />
+                <div onClick={() => setSelectedId(null)}></div>
             </motion.div>
             <div className="card-content-container open">
                 <motion.div
@@ -114,10 +122,12 @@ export function Item({ id }: { id: string }) {
                         className="card-image-container"
                         layoutId={`card-image-container-${id}`}
                     >
-                        <img
+                        <Image
                             className="card-image"
-                            src={`images/${id}.jpg`}
+                            src={image.src}
                             alt=""
+                            fill
+                            priority
                         />
                     </motion.div>
                     <motion.div
@@ -129,8 +139,8 @@ export function Item({ id }: { id: string }) {
                     </motion.div>
                     <motion.div className="content-container" animate>
                         <LoremIpsum
-                            p={6}
-                            avgWordsPerSentence={6}
+                            p={1}
+                            avgWordsPerSentence={5}
                             avgSentencesPerParagraph={4}
                         />
                     </motion.div>
@@ -170,7 +180,13 @@ export function Card({
                         className="card-image-container"
                         layoutId={`card-image-container-${id}`}
                     >
-                        <img className="card-image" src={image.src} alt="" />
+                        <Image
+                            className="card-image"
+                            src={image.src}
+                            alt=""
+                            fill
+                            priority
+                        />
                     </motion.div>
                     <motion.div
                         className="title-container"
@@ -181,7 +197,10 @@ export function Card({
                     </motion.div>
                 </motion.div>
             </div>
-            <Link href={`#`} className={`card-open-link`} />
+            <div
+                className={`card-open-link`}
+                onClick={() => setSelectedId(id)}
+            ></div>
         </li>
     );
 }
@@ -194,18 +213,29 @@ export function List({
     setSelectedId: any;
 }) {
     return (
-        <div className=" w-full max-w-5xl flex-[1_1_100%] py-11 px-6">
-            <ul className="card-list">
-                {items.map((card) => (
-                    <Card
-                        key={card.id}
-                        {...card}
-                        selectedId={selectedId}
+        <React.Fragment>
+            <div className=" w-full max-w-5xl flex-[1_1_100%] py-11 px-6">
+                <ul className="card-list">
+                    {items.map((card) => (
+                        <Card
+                            key={card.id}
+                            {...card}
+                            selectedId={selectedId}
+                            setSelectedId={setSelectedId}
+                        />
+                    ))}
+                </ul>
+            </div>
+            <AnimatePresence>
+                {selectedId && (
+                    <Item
+                        id={selectedId}
+                        key="item"
                         setSelectedId={setSelectedId}
                     />
-                ))}
-            </ul>
-        </div>
+                )}
+            </AnimatePresence>
+        </React.Fragment>
     );
 }
 

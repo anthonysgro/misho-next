@@ -1,18 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-    motion,
-    useMotionValue,
-    useTransform,
-    AnimateSharedLayout,
-} from "framer-motion";
-import {
-    Store,
-    Card,
-    List,
-    items,
-} from "@/components/test-framer/test-feature";
+import { motion } from "framer-motion";
+import { List } from "@/components/test-framer/test-feature";
 
 export default function Feature() {
     const [animated, setAnimated] = useState(false);
@@ -21,12 +11,15 @@ export default function Feature() {
         React.Dispatch<React.SetStateAction<string | null>>,
     ];
 
+    const handleSelection = (id: string | null) => {
+        console.log("selectionId:" + id);
+    };
+
     return (
         <section className="py-20 px-10 relative bg-dark w-full min-h-[300px] lg:min-h-[500px] flex justify-start items-center flex-col text-background">
             <motion.div
-                initial={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
                 className="flex flex-col items-center text-center max-w-2xl"
             >
                 <p className="text-muted-foreground my-2">Engage Community</p>

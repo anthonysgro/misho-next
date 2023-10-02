@@ -364,7 +364,7 @@
         max-width: 990px;
     }
 
-    .overlay a {
+    .overlay div {
         display: block;
         position: fixed;
         top: 0;
